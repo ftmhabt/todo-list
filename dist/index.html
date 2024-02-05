@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="main.js" defer></script>
     <title>todo</title>
 </head>
+
 <body>
     <div class="logo-holder">
         <h1>todo</h1>
@@ -15,14 +17,32 @@
     </div>
     <div class="tags-holder">
         <ul>
-            <li>home</li>
-            <li>work</li>
-            <li>study</li>
-            <li>family</li>
+            <li>default</li>
         </ul>
+        <input type="text" name="tagName" id="tag-name" placeholder="tag name">
+        <button id="add-tag">+</button>
+        <form>
+            <label for="title">title</label>
+            <input type="text" name="title" id="title">
+            <label for="description">description</label>
+            <textarea name="description" id="description" cols="30" rows="10"></textarea>
+            <fieldset>
+                <legend>priorty</legend>
+                <input type="radio" name="priorty" value="high" id="high">
+                <input type="radio" name="priorty" value="medium" id="medium">
+                <input type="radio" name="priorty" value="low" id="low">
+            </fieldset>
+            <input type="date" name="date" id="date">
+
+            <label for="tags">Choose a tag:</label>
+            <select name="tags" id="tags">
+            </select>
+            <button id="submit-todo-btn">add</button>
+        </form>
     </div>
     <div class="container">
-        
+
     </div>
 </body>
+
 </html>
