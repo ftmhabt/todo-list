@@ -1,39 +1,42 @@
 import './style.css';
+import dom from './dom';
 import form from './form';
 import todo from './todo';
 import tag from './tag';
 
 //show todo form button
 let addBtn = document.querySelector('.add-btn');
-addBtn.addEventListener('click', form.show);
+addBtn.addEventListener('click', () => {
+    form.show();
+    dom.populateTagsInForm();
+});
 
 //add todo button
 let submitTodoBtn = document.querySelector('#submit-todo-btn');
 submitTodoBtn.addEventListener('click', (event) => {
 
-  event.preventDefault();
+    event.preventDefault();
 
-  todo.add(form.title.value,
-    form.description.value,
-    getSelectedRadioValue(),
-    form.date.value,
-    form.tag.value,
-    false);
+    todo.add(form.getTitle(),
+        form.getDescription(),
+        form.getRadio(),
+        form.getDueDate(),
+        form.getTag(),
+        false);
 
-  form.reset();
-  form.hide();
+    form.reset();
+    form.hide();
+    dom.populateContainer();
 });
-
-function getSelectedRadioValue() {
-
-  for (let i = 0; i < form.radios.length; i++) {
-      if (form.radios[i].checked) {
-          return form.radios[i].value;
-      }
-  }
-  return '';
-}
 
 //add tag button
 let addTagBtn = document.querySelector('#add-tag');
-addTagBtn.addEventListener('click',tag.add);
+let tagField = document.querySelector('#tag-name');
+addTagBtn.addEventListener('click', () => {
+    tag.add(tagField.value);
+    dom.populateTags();
+    tagField.value = '';
+});
+
+//tags checkbox
+
