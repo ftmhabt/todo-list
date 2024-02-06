@@ -16,8 +16,8 @@
         <button class="add-btn">add</button>
     </div>
     <div class="tags-holder">
-        <ul>
-            <li>default</li>
+        <ul class="tags">
+            <li>all <input type="checkbox"></li>
         </ul>
         <input type="text" name="tagName" id="tag-name" placeholder="tag name">
         <button id="add-tag">+</button>
@@ -35,8 +35,9 @@
             <input type="date" name="date" id="date">
 
             <label for="tags">Choose a tag:</label>
-            <select name="tags" id="tags">
-            </select>
+            <div id="tags">
+                <legend>tags</legend>
+            </div>
             <button id="submit-todo-btn">add</button>
         </form>
     </div>
