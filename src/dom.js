@@ -3,7 +3,7 @@ import tag from "./tag";
 
 let dom = (() => {
     return {
-        populateContainer() {
+        populateContainer(tagName) {
 
 
             let tags = document.querySelectorAll('.side-tag');
@@ -15,31 +15,29 @@ let dom = (() => {
             }
 
             //populate
-            for (let i = 0; i < tags.length; i++) {
-                for (let j = 0; j < todo.getTodosNumbers; j++) {
-                    if (tags[i].checked) {
-                        if (todo.getTodoTagArray()[j].includes(tags[i].value)) {
-                            let todoItem = document.createElement('div');
-                            let todoTitle = document.createElement('div');
-                            let todoDate = document.createElement('div');
-                            let todoIsDone = document.createElement('input');
-                            todoIsDone.type = 'checkbox';
+            for (let i = 0; i < todo.getTodoTagArrayBasedOnTags(tagName).length; i++) {
+                let todoItem = document.createElement('div');
+                let todoTitle = document.createElement('div');
+                let todoDate = document.createElement('div');
+                let todoIsDone = document.createElement('input');
+                todoIsDone.type = 'checkbox';
 
-                            todoTitle.textContent = todo.get('title')[j];
-                            todoDate.textContent = todo.get('dueDate')[j];
-                            todoIsDone.checked = todo.get('isdone')[j];
+                todoTitle.textContent = todo.getTodoTagArrayBasedOnTags(tagName)[i].title;
+                todoDate.textContent = todo.getTodoTagArrayBasedOnTags(tagName)[i].dueDate;
+                todoIsDone.checked = todo.getTodoTagArrayBasedOnTags(tagName)[i].isdone;
 
-                            todoItem.appendChild(todoTitle);
-                            todoItem.appendChild(todoDate);
-                            todoItem.appendChild(todoIsDone);
-                            container.appendChild(todoItem);
+                todoItem.appendChild(todoTitle);
+                todoItem.appendChild(todoDate);
+                todoItem.appendChild(todoIsDone);
+                container.appendChild(todoItem);
 
-                            todoIsDone.addEventListener('change', function () {
-                                todo.setIsDone[todoIsDone.checked, j];
-                            });
-                        }
-                    }
-                }
+                todoIsDone.addEventListener('change', function () {
+                    todo.setIsDone[todoIsDone.checked, i];
+
+                });
+
+
+
             }
         },
         populateTags() {
@@ -55,14 +53,30 @@ let dom = (() => {
             for (let i = 0; i < tag.getTagsNumber(); i++) {
 
                 let li = document.createElement('li');
-                let checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.value = tag.getTags()[i];
-                checkbox.classList.add('side-tag');
+                let radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'tag';
+                li.textContent = tag.getTags()[i].name;
+                radio.checked = tag.getTags()[i].checked;
+                radio.classList.add('side-tag');
 
-                li.textContent = tag.getTags()[i];
+                radio.addEventListener('change', () => {
+                    if (radio.checked) {
+                        for (let j = 0; j < tag.getTagsNumber(); j++) {
+                            if (j === i) {
 
-                li.appendChild(checkbox);
+                                tag.changeTagsState(tag.getTags()[j].name, true);
+                            } else {
+
+                                tag.changeTagsState(tag.getTags()[j].name, false);
+                            }
+                        }
+                    }
+
+                    dom.populateContainer(tag.getTrueTag());
+                })
+
+                li.appendChild(radio);
                 tags_ul.appendChild(li);
 
             }
@@ -84,29 +98,23 @@ let dom = (() => {
                 checkbox.type = 'checkbox';
                 checkbox.classList.add('tag');
                 checkbox.setAttribute('id', `tag${i}`);
-                checkbox.value = tag.getTags()[i];
+                checkbox.value = tag.getTags()[i].name;
                 checkbox.addEventListener('change', () => {
                     checkbox.setAttribute('checked', this.checked);
-                    if (checkbox.checked) {
-                        console.log('checked');
-                    } else {
-                        console.log('unchecked');
-                    }
-                    dom.populateContainer();
                 });
-                
-
-            label.htmlFor = `tag${i}`;
-            label.textContent = tag.getTags()[i];
 
 
-            tags_fieldset.appendChild(checkbox);
-            tags_fieldset.appendChild(label);
+                label.htmlFor = `tag${i}`;
+                label.textContent = tag.getTags()[i].name;
+
+
+                tags_fieldset.appendChild(checkbox);
+                tags_fieldset.appendChild(label);
 
             }
 
         },
     };
-}) ()
+})()
 
 export default dom;

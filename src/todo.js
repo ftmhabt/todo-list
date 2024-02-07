@@ -17,8 +17,17 @@ let todo = (() => {
         getTodosNumbers(){
             return todos.length;
         },
-        getTodoTagArray(){
-            return todo.tag;
+        getTodoTagArrayBasedOnTags(tagName){
+            let holder=[];
+            for (let i = 0; i < todos.length; i++) {
+                for (let j = 0; j < todos[i].tag.length; j++) {
+                    if(todos[i].tag[j]===tagName){
+                        holder.push(todos[i]);
+                    }
+                }
+                
+            }
+            return holder;
         }
     };
 })();

@@ -26,14 +26,17 @@ submitTodoBtn.addEventListener('click', (event) => {
 
     form.reset();
     form.hide();
-    dom.populateContainer();
+
+
+
+    dom.populateContainer(tag.getTrueTag());
 });
 
 //add tag button
 let addTagBtn = document.querySelector('#add-tag');
 let tagField = document.querySelector('#tag-name');
 addTagBtn.addEventListener('click', () => {
-    tag.add(tagField.value);
+    tag.add(tagField.value,false);
     dom.populateTags();
     tagField.value = '';
 });
