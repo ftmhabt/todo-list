@@ -15,6 +15,7 @@
 }
 
 body{
+    padding: 5rem;
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -64,11 +65,16 @@ ul.tags{
     appearance: none;
 }
 
+li:has([type="radio"]){
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    width: fit-content;
+    list-style: none;
+}
+
 li:has([type="radio"]:checked){
     background-color: var(--yellow);
-    border-radius: 0.5rem;
     padding: 0.2rem 1rem;
-    width: fit-content;
 }
 
 #tag-name{
@@ -91,13 +97,14 @@ li:has([type="radio"]:checked){
     display: grid;
     grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
     grid-auto-rows: 100px;
+    gap: 1rem;
 }
 
 .container>*{
     background-color: var(--yellow);
     border: 1px solid var(--black);
     border-radius: 0.5rem;
-    max-width: 500px;
+    max-width: 400px;
     padding: 1rem;
 }
 
