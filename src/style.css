@@ -1,4 +1,7 @@
-
+:root{
+    --black:#69665c;
+    --yellow:#fff9de;
+}
 
 *{
     box-sizing: border-box;
