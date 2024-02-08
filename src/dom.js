@@ -54,11 +54,14 @@ let dom = (() => {
 
                 let li = document.createElement('li');
                 let radio = document.createElement('input');
+                let label=document.createElement('label');
+                label.htmlFor=`side-tag${i}`;
                 radio.type = 'radio';
                 radio.name = 'tag';
-                li.textContent = tag.getTags()[i].name;
+                label.textContent = tag.getTags()[i].name;
                 radio.checked = tag.getTags()[i].checked;
                 radio.classList.add('side-tag');
+                radio.setAttribute('id', `side-tag${i}`);
 
                 radio.addEventListener('change', () => {
                     if (radio.checked) {
@@ -76,6 +79,7 @@ let dom = (() => {
                     dom.populateContainer(tag.getTrueTag());
                 })
 
+                li.appendChild(label);
                 li.appendChild(radio);
                 tags_ul.appendChild(li);
 
