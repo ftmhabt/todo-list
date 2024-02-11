@@ -1,5 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-plusplus */
+// eslint-disable-next-line import/no-extraneous-dependencies
+import {format} from "date-fns";
 import todo from './todo';
 import tag from './tag';
 
@@ -25,7 +27,7 @@ const dom = (() => ({
       todoIsDone.checked = todo.getTodoTagArrayBasedOnTags(tagName)[i].isdone;
 
       todoItem.appendChild(todoTitle);
-      todoItem.appendChild(todoDate);
+      todoItem.appendChild(format(todoDate));
       todoItem.appendChild(todoIsDone);
       container.appendChild(todoItem);
 
