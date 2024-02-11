@@ -18,5 +18,8 @@
     "style-loader": "^3.3.4",
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "moment": "^2.30.1"
   }
 }
