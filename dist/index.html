@@ -24,21 +24,22 @@
         <input type="text" name="tagName" id="tag-name" placeholder="tag name">
         <button id="add-tag">+</button>
         <form>
+            <button class="close">exit</button>
             <label for="title">title</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" required>
             <label for="description">description</label>
             <textarea name="description" id="description" cols="30" rows="10"></textarea>
             <fieldset>
                 <legend>priorty</legend>
-                <input type="radio" name="priorty" value="high" id="high">
-                <input type="radio" name="priorty" value="medium" id="medium">
-                <input type="radio" name="priorty" value="low" id="low">
+                high <input type="radio" name="priorty" value="high" id="high">
+                medium <input type="radio" name="priorty" value="medium" id="medium">
+                low <input type="radio" name="priorty" value="low" id="low">
             </fieldset>
-            <input type="date" name="date" id="date">
+            <input type="date" name="date" id="date" required>
 
-            <label for="tags">Choose a tag:</label>
+            <label class="tag-label hide" for="tags">Choose a tag:</label>
             <div id="tags">
-                <legend>tags</legend>
+                <legend class="legend hide">tags</legend>
             </div>
             <button id="submit-todo-btn">add</button>
         </form>
