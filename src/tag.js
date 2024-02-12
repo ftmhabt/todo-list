@@ -1,17 +1,26 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-plusplus */
 const tag = (() => {
-  const tags = [{ name: 'all', checked: true }];
+  let tags = [{ name: "all", checked: true }];
   return {
+    loadFromStorage() {
+      tags = JSON.parse( localStorage.getItem("tags"));
+    },
     add(name, checked) {
       tags.push({ name, checked });
+      localStorage.setItem("tags", JSON.stringify(tags) );
     },
-    getTags() { return tags; },
-    getTagsNumber() { return tags.length; },
+    getTags() {
+      return tags;
+    },
+    getTagsNumber() {
+      return tags.length;
+    },
     changeTagsState(name, checked) {
       for (let i = 0; i < tags.length; i++) {
         if (name === tags[i].name) {
           tags[i].checked = checked;
+          localStorage.setItem("tags", JSON.stringify(tags));
         }
       }
     },
@@ -21,7 +30,7 @@ const tag = (() => {
           return tags[i].name;
         }
       }
-      return '';
+      return "";
     },
   };
 })();

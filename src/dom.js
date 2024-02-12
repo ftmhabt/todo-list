@@ -10,7 +10,7 @@ const dom = (() => {
   const legend = document.querySelector(".legend");
 
   return {
-    populateContainer(tagName) {
+    populateContainer(tagName = "all") {
       const container = document.querySelector(".container");
 
       // clear
@@ -32,7 +32,7 @@ const dom = (() => {
         const todoIsDone = document.createElement("input");
         const todoDes = document.createElement("div");
         const todoTags = document.createElement("div");
-        
+
         todoDes.classList.add("hide");
         todoIsDone.type = "checkbox";
         div.classList.add("holder");
@@ -88,6 +88,7 @@ const dom = (() => {
         todoItem.appendChild(div);
         container.appendChild(todoItem);
 
+        todoIsDone.addEventListener('hover',()=>console.log('clicked'));
         todoIsDone.addEventListener("change", () => {
           todo.setIsDone(todoIsDone.checked, i);
         });

@@ -1,12 +1,16 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-plusplus */
 const todo = (() => {
-  const todos = [];
+  let todos = [];
   return {
+    loadFromStorage() {
+      todos=JSON.parse(localStorage.getItem('todos'));
+    },
     add(title, description, priorty, dueDate, tag, isdone) {
       todos.push({
         title, description, priorty, dueDate, tag, isdone,
       });
+      localStorage.setItem('todos',JSON.stringify(todos));
     },
     get(name) {
       const holder = [];
@@ -17,6 +21,7 @@ const todo = (() => {
     },
     setIsDone(value, index) {
       todos[index].isdone = value;
+      localStorage.setItem('todos',JSON.stringify(todos));
     },
     getTodosNumbers() {
       return todos.length;
