@@ -37,6 +37,17 @@ const todo = (() => {
       }
       return holder;
     },
+    deleteDoneTodos(){
+      for (let i = 0; i < todos.length; i++) {
+        if(todos[i].isdone){
+          todos.splice(i,1);
+        }
+      }
+      localStorage.setItem('todos',JSON.stringify(todos));
+    },
+    isEmpty(){
+      return todos.length===0;
+    }
   };
 })();
 

@@ -113,13 +113,25 @@ li:has([type="radio"]:checked) {
   cursor: pointer;
 }
 
+/* clear button */
+
+.clear{
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+  float: left;
+  padding: 1rem 0 0 1rem;
+}
+
 /* add button */
 
 .add-holder {
   position: relative;
   align-self: center;
-  justify-self: right;
+  align-items: baseline;
+  justify-self: stretch;
   padding-right: 1rem;
+
 }
 
 .add-btn {
@@ -128,6 +140,7 @@ li:has([type="radio"]:checked) {
   outline: 0;
   font-size: 2rem;
   cursor: pointer;
+  float: right;
 }
 
 .down{
@@ -137,6 +150,7 @@ li:has([type="radio"]:checked) {
 /* form */
 
 form {
+  display: flex;
   position: absolute;
   flex-direction: column;
   background-color: white;
@@ -144,20 +158,23 @@ form {
   padding: 1rem;
   gap: 0.5rem;
   border-radius: 0.5rem;
-  right: 100%;
+  right: 1rem;
+  top: 3rem;
 
   opacity: 0;
   transform: translateY(-10px);
-  display: none;
+  /* display: none; */
 
 
+  pointer-events: none;
   transition: opacity 100ms ease-in-out, transform 100ms ease-in-out;
 }
 
 form.active{
-  display: flex;
+  /* display: flex; */
   opacity: 1;
   transform: translateY(0);
+  pointer-events: all;
 }
 
 

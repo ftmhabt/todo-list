@@ -18,6 +18,13 @@ if(localStorage.getItem('todos')!==null){
   dom.populateTagsInForm();
 }
 
+// clear todos
+const clearBtn=document.querySelector('.clear');
+clearBtn.addEventListener('click',()=>{
+  todo.deleteDoneTodos();
+  dom.populateContainer();
+})
+
 
 // show todo form button
 const addBtn = document.querySelector(".add-btn");
