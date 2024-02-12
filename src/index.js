@@ -8,7 +8,7 @@ import tag from "./tag";
 // show todo form button
 const addBtn = document.querySelector(".add-btn");
 addBtn.addEventListener("click", () => {
-  form.show();
+  form.toggleActive();
 });
 
 // add todo button
@@ -27,7 +27,7 @@ submitTodoBtn.addEventListener("click", (event) => {
     );
 
     form.reset();
-    form.hide();
+    form.toggleActive();
 
     dom.populateContainer(tag.getTrueTag());
   }
@@ -43,6 +43,3 @@ addTagBtn.addEventListener("click", () => {
   tagField.value = "";
 });
 
-// close form
-const closeBtn=document.querySelector('.close');
-closeBtn.addEventListener('click',form.hide);

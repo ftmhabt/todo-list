@@ -29,22 +29,6 @@ body {
   padding-left: 0.5rem;
 }
 
-/* add button */
-
-.add-holder {
-  align-self: center;
-  justify-self: right;
-  padding-right: 1rem;
-}
-
-.add-btn {
-  background-color: white;
-  border: 0;
-  outline: 0;
-  font-size: 2rem;
-  cursor: pointer;
-}
-
 /* tags side bar */
 
 .tags-holder {
@@ -129,25 +113,51 @@ li:has([type="radio"]:checked) {
   cursor: pointer;
 }
 
-/* form */
-.close {
+/* add button */
+
+.add-holder {
+  position: relative;
+  align-self: center;
+  justify-self: right;
+  padding-right: 1rem;
+}
+
+.add-btn {
+  background-color: white;
+  border: 0;
+  outline: 0;
+  font-size: 2rem;
   cursor: pointer;
 }
+
+.down{
+  transform: translateY(0);
+}
+
+/* form */
+
 form {
   position: absolute;
-  display: none;
+  display: flex;
   flex-direction: column;
-  left: 30%;
   background-color: white;
   border: 1px solid var(--black);
   padding: 1rem;
   gap: 0.5rem;
   border-radius: 0.5rem;
+  right: 100%;
+
+  opacity: 0;
+  transform: translateY(-10px);
+
+  transition: opacity 100ms ease-in-out, transform 100ms ease-in-out;
 }
 
-.show {
-  display: flex;
+form.active{
+  opacity: 1;
+  transform: translateY(0);
 }
+
 
 .hide {
   display: none;

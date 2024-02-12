@@ -10,11 +10,8 @@ const form = (() => {
   let tags;
 
   return {
-    show() {
-      formElement.classList.add("show");
-    },
-    hide() {
-      formElement.classList.remove("show");
+    toggleActive(){
+      formElement.classList.toggle('active');
     },
     reset() {
       formElement.reset();
