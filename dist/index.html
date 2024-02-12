@@ -1,52 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="main.js" defer></script>
     <title>todo</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="logo-holder">
-        <h1>todo</h1>
+      <h1>todo</h1>
     </div>
     <div class="add-holder">
-        <button class="add-btn">add</button>
+      <button class="add-btn">+</button>
     </div>
     <div class="tags-holder">
-        <ul class="tags">
-            <li>
-                 <input type="radio" name="" id="" checked><label for="">all</label>
-            </li>
-        </ul>
-        <input type="text" name="tagName" id="tag-name" placeholder="tag name">
+      <h3>tags</h3>
+      <ul class="tags">
+        <li>
+          <input type="radio" name="" id="" checked /><label for="">all</label>
+        </li>
+      </ul>
+      <div class="tags-input">
+        <input
+          type="text"
+          name="tagName"
+          id="tag-name"
+          placeholder="tag name"
+        />
         <button id="add-tag">+</button>
-        <form>
-            <button class="close">exit</button>
-            <label for="title">title</label>
-            <input type="text" name="title" id="title" required>
-            <label for="description">description</label>
-            <textarea name="description" id="description" cols="30" rows="10"></textarea>
-            <fieldset>
-                <legend>priorty</legend>
-                high <input type="radio" name="priorty" value="high" id="high">
-                medium <input type="radio" name="priorty" value="medium" id="medium">
-                low <input type="radio" name="priorty" value="low" id="low">
-            </fieldset>
-            <input type="date" name="date" id="date" required>
+      </div>
 
-            <label class="tag-label hide" for="tags">Choose a tag:</label>
-            <div id="tags">
-                <legend class="legend hide">tags</legend>
-            </div>
-            <button id="submit-todo-btn">add</button>
-        </form>
+      <form>
+        <button class="close">exit</button>
+        <label for="title">title</label>
+        <input type="text" name="title" id="title" required />
+        <label for="description">description</label>
+        <textarea
+          name="description"
+          id="description"
+          cols="30"
+          rows="10"
+        ></textarea>
+        <fieldset>
+          <legend>priorty</legend>
+          high
+          <input type="radio" name="priorty" value="high" id="high" /> medium
+          <input type="radio" name="priorty" value="medium" id="medium" /> low
+          <input type="radio" name="priorty" value="low" id="low" />
+        </fieldset>
+        <input type="date" name="date" id="date" required />
+
+        <label class="tag-label hide" for="tags">Choose a tag:</label>
+        <div id="tags">
+          <legend class="legend hide">tags</legend>
+        </div>
+        <button id="submit-todo-btn">add</button>
+      </form>
     </div>
-    <div class="container">
-
-    </div>
-</body>
-
+    <div class="container"></div>
+  </body>
 </html>
