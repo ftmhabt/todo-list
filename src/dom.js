@@ -25,17 +25,30 @@ const dom = (() => {
         i++
       ) {
         const todoItem = document.createElement("div");
-        todoItem.classList.add("opened");
+
         const div = document.createElement("div");
-        div.classList.add("holder");
         const todoTitle = document.createElement("h3");
         const todoDate = document.createElement("div");
         const todoIsDone = document.createElement("input");
-        todoIsDone.type = "checkbox";
         const todoDes = document.createElement("div");
-        todoDes.classList.add("description");
         const todoTags = document.createElement("div");
-        todoTags.classList.add("tag-holder");
+        
+        todoDes.classList.add("hide");
+        todoIsDone.type = "checkbox";
+        div.classList.add("holder");
+        todoTags.classList.add("hide");
+
+        todoTitle.addEventListener("click", () => {
+          if (todoDes.classList.contains("hide")) {
+            todoItem.classList.add("opened");
+            todoDes.classList.remove("hide");
+            todoTags.classList.add("tag-holder");
+          } else {
+            todoItem.classList.remove("opened");
+            todoDes.classList.add("hide");
+            todoTags.classList.remove("tag-holder");
+          }
+        });
 
         for (
           let j = 1;
