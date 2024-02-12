@@ -7,7 +7,11 @@ import tag from "./tag";
 
 
 // local storage
-
+if(localStorage.getItem('tags')!==null){
+  tag.loadFromStorage();
+  dom.populateTags();
+  dom.populateTagsInForm();
+}
 if(localStorage.getItem('todos')!==null){
   todo.loadFromStorage();
   tag.loadFromStorage();

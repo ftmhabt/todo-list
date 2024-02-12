@@ -14,6 +14,10 @@
   /* border: 1px solid mediumslateblue; */
 }
 
+input[type='checkbox']{
+  accent-color: var(--black);
+}
+
 body {
   padding: 5rem;
   height: 100vh;
@@ -50,14 +54,15 @@ ul.tags {
 }
 
 .tags li{
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
   align-items: center;
 }
 
 .tags li>div{
   cursor: pointer;
   padding-right: 0.15rem;
+  justify-self: right;
 }
 
 li:has([type="radio"]) label {
@@ -65,6 +70,7 @@ li:has([type="radio"]) label {
   padding: 0.2rem 0.5rem;
   width: fit-content;
   list-style: none;
+  justify-self: left;
 }
 
 li:has([type="radio"]:checked) label{
