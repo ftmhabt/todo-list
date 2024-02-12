@@ -20,9 +20,9 @@ const tag = (() => {
       for (let i = 0; i < tags.length; i++) {
         if (name === tags[i].name) {
           tags[i].checked = checked;
-          localStorage.setItem("tags", JSON.stringify(tags));
         }
       }
+      localStorage.setItem("tags", JSON.stringify(tags));
     },
     getTrueTag() {
       for (let i = 0; i < tags.length; i++) {
@@ -32,6 +32,14 @@ const tag = (() => {
       }
       return "";
     },
+    remove(name){
+      for (let i = 0; i < tags.length; i++) {
+        if (tags[i].name===name) {
+          tags.splice(i,1);
+        }
+      }
+      localStorage.setItem("tags", JSON.stringify(tags));
+    }
   };
 })();
 

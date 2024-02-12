@@ -49,14 +49,25 @@ ul.tags {
   appearance: none;
 }
 
-li:has([type="radio"]) {
+.tags li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tags li>div{
+  cursor: pointer;
+  padding-right: 0.15rem;
+}
+
+li:has([type="radio"]) label {
   border-radius: 0.5rem;
   padding: 0.2rem 0.5rem;
   width: fit-content;
   list-style: none;
 }
 
-li:has([type="radio"]:checked) {
+li:has([type="radio"]:checked) label{
   background-color: var(--yellow);
   padding: 0.2rem 1rem;
 }
@@ -64,6 +75,9 @@ li:has([type="radio"]:checked) {
   display: flex;
   gap: 0.5rem;
   align-content: center;
+}
+.tags-input input {
+  flex: 1;
 }
 #tag-name {
   border-radius: 1rem;

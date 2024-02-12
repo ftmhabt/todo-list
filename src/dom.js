@@ -5,11 +5,7 @@ import moment from "moment";
 import todo from "./todo";
 import tag from "./tag";
 
-const dom = (() => {
-  const sectionLabel = document.querySelector(".tag-label");
-  const legend = document.querySelector(".legend");
-
-  return {
+const dom = (() => ({
     populateContainer(tagName = "all") {
       const container = document.querySelector(".container");
 
@@ -88,7 +84,6 @@ const dom = (() => {
         todoItem.appendChild(div);
         container.appendChild(todoItem);
 
-        todoIsDone.addEventListener('hover',()=>console.log('clicked'));
         todoIsDone.addEventListener("change", () => {
           todo.setIsDone(todoIsDone.checked, i);
         });
@@ -107,6 +102,8 @@ const dom = (() => {
         const li = document.createElement("li");
         const radio = document.createElement("input");
         const label = document.createElement("label");
+        const removeBtn = document.createElement("div");
+        removeBtn.textContent = `−`;
         label.htmlFor = `side-tag${i}`;
         radio.type = "radio";
         radio.name = "tag";
@@ -129,20 +126,22 @@ const dom = (() => {
           dom.populateContainer(tag.getTrueTag());
         });
 
+        removeBtn.addEventListener("click", () => {
+          tag.remove(tag.getTags()[i].name);
+          dom.populateTags();
+          dom.populateTagsInForm();
+        });
+
         li.appendChild(label);
         li.appendChild(radio);
+        if (i > 0) {
+          li.appendChild(removeBtn);
+        }
         tagsUl.appendChild(li);
       }
     },
     populateTagsInForm() {
       const tagsFieldset = document.querySelector("#tags");
-
-      if (legend.classList.contains("hide")) {
-        legend.classList.remove("hide");
-      }
-      if (sectionLabel.classList.contains("hide")) {
-        sectionLabel.classList.remove("hide");
-      }
 
       // clear
       while (tagsFieldset.childNodes.length > 1) {
@@ -168,7 +167,6 @@ const dom = (() => {
         tagsFieldset.appendChild(label);
       }
     },
-  };
-})();
+  }))();
 
 export default dom;
