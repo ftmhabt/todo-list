@@ -230,3 +230,28 @@ form.active{
   display: flex;
   justify-content: space-between;
 }
+
+
+@media screen and (max-width:750px){
+  body {
+    padding: .2rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 50px 1fr 10fr;
+  }
+
+  .logo-holder{
+    padding-left: 1rem;
+  }
+
+  .add-holder{
+    padding: 1rem;
+  }
+
+  .clear{
+    padding-left: 0;
+  }
+
+  .tags-holder{
+    padding: 1rem;
+  }
+}
